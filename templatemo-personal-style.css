@@ -657,7 +657,7 @@ https://templatemo.com/tm-593-personal-shape
         .about-image {
             width: 100%;
             height: 500px;
-            background: url('DSC03565.jpg') center/cover;
+            background: url('./DSC03565.jpg') center/cover;
             border-radius: 30px;
             position: relative;
             overflow: hidden;
@@ -1224,6 +1224,7 @@ https://templatemo.com/tm-593-personal-shape
             }
 
         }
+
 
 
 
