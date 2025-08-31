@@ -430,16 +430,7 @@ https://templatemo.com/tm-593-personal-shape
             border-radius: 30px;
             animation: floatShape6 28s ease-in-out infinite;
         }
-       .visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
-}
+       
 
         @keyframes floatShape1 {
             0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
@@ -1140,6 +1131,16 @@ https://templatemo.com/tm-593-personal-shape
             opacity: 1;
             transform: translateX(0);
         }
+       .visually-hidden {
+         position: absolute;
+         width: 1px;
+         height: 1px;
+         padding: 0;
+         margin: -1px;
+         overflow: hidden;
+         clip: rect(0,0,0,0);
+         border: 0;
+}
 
         /* Mobile Responsiveness */
         @media (max-width: 1024px) {
@@ -1223,5 +1224,6 @@ https://templatemo.com/tm-593-personal-shape
             }
 
         }
+
 
 
