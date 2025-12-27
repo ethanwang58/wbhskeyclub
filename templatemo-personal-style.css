@@ -199,14 +199,21 @@ https://templatemo.com/tm-593-personal-shape
         /* Logo image next to the site title */
         .logo img, .nav-logo {
             height: 40px;
+            max-height: 40px;
+            width: auto;
+            max-width: 160px;
             margin-left: 12px;
             display: inline-block;
             vertical-align: middle;
+            object-fit: contain;
         }
 
         @media (max-width: 768px) {
             .logo img, .nav-logo {
                 height: 30px;
+                max-height: 30px;
+                width: auto;
+                max-width: 120px;
                 margin-left: 8px;
             }
         }
