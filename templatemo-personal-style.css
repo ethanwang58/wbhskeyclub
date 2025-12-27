@@ -196,6 +196,21 @@ https://templatemo.com/tm-593-personal-shape
             letter-spacing: -0.5px;
         }
 
+        /* Logo image next to the site title */
+        .logo img, .nav-logo {
+            height: 40px;
+            margin-left: 12px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .logo img, .nav-logo {
+                height: 30px;
+                margin-left: 8px;
+            }
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
@@ -430,7 +445,6 @@ https://templatemo.com/tm-593-personal-shape
             border-radius: 30px;
             animation: floatShape6 28s ease-in-out infinite;
         }
-       
 
         @keyframes floatShape1 {
             0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
@@ -685,9 +699,9 @@ https://templatemo.com/tm-593-personal-shape
             opacity: 0.7;
         }
 
-        .about-image::after {
+        /*.about-image::after {
 
-        }
+        } */
 
         .about-text h3 {
             font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
@@ -781,27 +795,27 @@ https://templatemo.com/tm-593-personal-shape
         }
 
         .portfolio-item:nth-child(2) .portfolio-image {
-            background-image: url('Untitled-15_0\ \(1\).jpg');
+            background-image: url('IMG_9469.jpg');
             filter:brightness(125%);
         }
 
         .portfolio-item:nth-child(3) .portfolio-image {
-            background-image: url('431C4E72-FF77-4B4E-BF4B-82A965E29CB2.jpg');
+            background-image: url('');
             filter:brightness(130%)
         }
 
         .portfolio-item:nth-child(4) .portfolio-image {
-            background-image: url('john-jay-french-museum.jpg');
+            background-image: url('');
             filter:brightness(140%);
         }
 
         .portfolio-item:nth-child(5) .portfolio-image {
-            background-image: url('joinKeyClub.jpg');
+            background-image: url('');
             filter:brightness(125%);
         }
 
         .portfolio-item:nth-child(6) .portfolio-image {
-            background-image: url('IMG_9469.jpg');
+            background-image: url('');
             filter:brightness(125%);
         }
 
@@ -857,6 +871,102 @@ https://templatemo.com/tm-593-personal-shape
         .tech-tag:hover {
             background: var(--primary-color);
             color: var(--text-light);
+        }
+
+        /* Members Section */
+        .members {
+            background: var(--bg-primary);
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Officers grid: 3 columns on desktop (4 rows x 3 columns layout) */
+        .officers-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 1200px) {
+            .officers-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .officers-grid { grid-template-columns: 1fr; }
+        }
+
+        .member-item {
+            background: var(--bg-card);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            padding: 1.25rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+        }
+
+        .member-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .member-image {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            /* Slightly zoom background to avoid repeated cutout at edges */
+            background-size: 108% 108%;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 4px solid rgba(255,255,255,0.08);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .member-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        @media (max-width: 1200px) {
+            .members-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .members-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .members-grid { grid-template-columns: 1fr; }
+        }
+
+        .member-role {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .member-skills {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 1024px) {
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+            .members-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .members-grid { grid-template-columns: 1fr; }
         }
 
         /* Contact Section */
@@ -1131,15 +1241,15 @@ https://templatemo.com/tm-593-personal-shape
             opacity: 1;
             transform: translateX(0);
         }
-       .visually-hidden {
-         position: absolute;
-         width: 1px;
-         height: 1px;
-         padding: 0;
-         margin: -1px;
-         overflow: hidden;
-         clip: rect(0,0,0,0);
-         border: 0;
+        .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        border: 0;
 }
 
         /* Mobile Responsiveness */
@@ -1222,10 +1332,4 @@ https://templatemo.com/tm-593-personal-shape
             .container {
                 padding: 0 1rem;
             }
-
         }
-
-
-
-
-
