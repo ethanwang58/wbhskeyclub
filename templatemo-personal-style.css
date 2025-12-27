@@ -208,6 +208,17 @@ https://templatemo.com/tm-593-personal-shape
             object-fit: contain;
         }
 
+        /* Target the exact image file if it gets oversized on some pages or caches */
+        img[src="Key Club Logo (Color).png"], img[alt="Key Club Logo"] {
+            max-height: 40px !important;
+            height: auto !important;
+            width: auto !important;
+            max-width: 160px !important;
+            object-fit: contain !important;
+            display: inline-block !important;
+            vertical-align: middle !important;
+        }
+
         @media (max-width: 768px) {
             .logo img, .nav-logo {
                 height: 30px;
@@ -215,6 +226,11 @@ https://templatemo.com/tm-593-personal-shape
                 width: auto;
                 max-width: 120px;
                 margin-left: 8px;
+            }
+
+            img[src="Key Club Logo (Color).png"], img[alt="Key Club Logo"] {
+                max-height: 30px !important;
+                max-width: 120px !important;
             }
         }
 
