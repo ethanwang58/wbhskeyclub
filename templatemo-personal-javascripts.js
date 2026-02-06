@@ -101,36 +101,99 @@ https://templatemo.com/tm-593-personal-shape
             });
         });
 
-        // Enhanced form submission with better UX
-        document.querySelector('.contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
+        // Enhanced form submission: prepare mailto and open email client; provide fallback with copy link
+        (function() {
+            const form = document.querySelector('.contact-form');
+            const feedbackEl = document.getElementById('contact-feedback');
             const submitBtn = document.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            
-            // Add loading state
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            submitBtn.style.background = 'linear-gradient(135deg, #94a3b8, #64748b)';
-            
-            // Simulate form submission with better feedback
-            setTimeout(() => {
-                submitBtn.textContent = 'Message Sent! ✓';
-                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                
-                // Show success animation
-                submitBtn.style.transform = 'scale(1.05)';
-                setTimeout(() => {
-                    submitBtn.style.transform = 'scale(1)';
-                }, 200);
-                
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = '';
-                    document.querySelector('.contact-form').reset();
-                }, 3000);
-            }, 2000);
-        });
+
+            function showFeedback(text, type = 'info', extraHTML = '') {
+                if (!feedbackEl) return;
+                feedbackEl.style.display = 'block';
+                feedbackEl.className = 'contact-feedback ' + type;
+                feedbackEl.innerHTML = `<div>${text}</div>` + extraHTML;
+            }
+
+            function clearFeedback() {
+                if (!feedbackEl) return;
+                feedbackEl.style.display = 'none';
+                feedbackEl.className = 'contact-feedback';
+                feedbackEl.innerHTML = '';
+            }
+
+            function copyToClipboard(text) {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    return navigator.clipboard.writeText(text);
+                } else {
+                    const ta = document.createElement('textarea');
+                    ta.value = text;
+                    document.body.appendChild(ta);
+                    ta.select();
+                    try { document.execCommand('copy'); } catch(e) {}
+                    document.body.removeChild(ta);
+                    return Promise.resolve();
+                }
+            }
+
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const originalText = submitBtn ? submitBtn.textContent : 'Send Message';
+
+                    if (submitBtn) {
+                        submitBtn.textContent = 'Preparing...';
+                        submitBtn.disabled = true;
+                        submitBtn.style.background = 'linear-gradient(135deg, #94a3b8, #64748b)';
+                    }
+
+                    const name = form.name.value.trim();
+                    const fromEmail = form.email.value.trim();
+                    const subject = form.subject.value.trim();
+                    const message = form.message.value.trim();
+                    if (!name || !fromEmail || !subject || !message) {
+                        showFeedback('Please fill out all fields.', 'error');
+                        if (submitBtn) {
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                            submitBtn.style.background = '';
+                        }
+                        return;
+                    }
+
+                    const to = 'tien0nguyen.07@gmail.com';
+                    const mailSubject = `${subject} — ${name}`;
+                    const body = `Name: ${name}\nEmail: ${fromEmail}\n\n${message}`;
+                    const mailto = `mailto:${to}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
+
+                    showFeedback('Opening your email client. If it does not open, you can copy the message or click the link below.', 'info', `<div style="margin-top:0.5rem"><a class="contact-link" href="${mailto}">Open email client</a> · <button id="contact-copy-btn" class="contact-copy-btn">Copy message</button></div>`);
+
+                    // Try to open the mailto link
+                    window.location.href = mailto;
+
+                    // Bind copy button
+                    setTimeout(() => {
+                        const copyBtn = document.getElementById('contact-copy-btn');
+                        if (copyBtn) {
+                            copyBtn.addEventListener('click', () => {
+                                copyToClipboard(`To: ${to}\nSubject: ${mailSubject}\n\n${body}`).then(() => {
+                                    showFeedback('Message copied to clipboard. Paste it into your email client.', 'success');
+                                });
+                            });
+                        }
+                    }, 50);
+
+                    // After a short delay reset the button and optionally keep the form
+                    setTimeout(() => {
+                        if (submitBtn) {
+                            submitBtn.textContent = 'Message Ready';
+                            submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                        }
+                        // Do not auto-reset form; let user confirm send in their email app
+                    }, 800);
+                });
+            }
+        })();
+
 
         // Enhanced parallax effect for hero background
         let ticking = false;

@@ -818,17 +818,17 @@ https://templatemo.com/tm-593-personal-shape
         }
 
         .portfolio-item:nth-child(2) .portfolio-image {
-            background-image: url('IMG_9469.jpg');
+            background-image: url('trackImage.jpg');
             filter:brightness(125%);
         }
 
         .portfolio-item:nth-child(3) .portfolio-image {
-            background-image: url('');
-            filter:brightness(130%)
+            background-image: url('bakeSale.jpg');
+            filter:brightness(130%);
         }
 
         .portfolio-item:nth-child(4) .portfolio-image {
-            background-image: url('');
+            background-image: url('IMG_9469.jpg');
             filter:brightness(140%);
         }
 
@@ -1230,6 +1230,31 @@ https://templatemo.com/tm-593-personal-shape
             transform: translateY(-3px);
             box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
         }
+
+        /* Contact feedback */
+        .contact-feedback {
+            display: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-top: 0.75rem;
+            background: rgba(99,102,241,0.07);
+            color: var(--text-light);
+            border: 1px solid rgba(99,102,241,0.12);
+        }
+        .contact-feedback.info { background: rgba(99,102,241,0.08); border-color: rgba(99,102,241,0.18); color: var(--text-light); }
+        .contact-feedback.success { background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.18); color: var(--text-light); }
+        .contact-feedback.error { background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.18); color: #fff; }
+        .contact-feedback .contact-link { color: var(--bg-dark); text-decoration: underline; margin-right: 0.5rem; }
+        .contact-copy-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+        .contact-copy-btn:hover { opacity: 0.9; }
 
         /* Animation Classes */
         .fade-in {
