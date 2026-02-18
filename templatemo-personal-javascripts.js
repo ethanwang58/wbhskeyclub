@@ -160,7 +160,7 @@ https://templatemo.com/tm-593-personal-shape
                         return;
                     }
 
-                    const to = 'tien0nguyen.07@gmail.com';
+                    const to = 'jnguyen@bmtisd.com';
                     const mailSubject = `${subject} — ${name}`;
                     const body = `Name: ${name}\nEmail: ${fromEmail}\n\n${message}`;
                     const mailto = `mailto:${to}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
